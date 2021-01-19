@@ -70,6 +70,22 @@ export function profileReducer(state = initialState, action) {
             }
         }
 
+        case PROFILE_LOGOUT_START: {
+            return state
+        }
+        case PROFILE_LOGOUT_SUCCESS: {
+            return {
+                ...state,
+                profile: null,
+                token: null,
+                expiresAt: null,
+
+            }
+        }
+        case PROFILE_LOGOUT_ERROR: {
+            return state
+        }
+
         default:
             return state
     }

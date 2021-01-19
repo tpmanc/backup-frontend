@@ -1,6 +1,8 @@
+import { apiUrl } from '../env'
+
 class ApiClient {
     getApiUrl () {
-        return "http://127.0.0.1:8000/api";
+        return `${apiUrl}/api`;
     }
 }
 

@@ -15,7 +15,7 @@ export default function FilesView() {
     const { Column, HeaderCell, Cell } = Table
 
     const backupsRequestStatus = useSelector(state => state.filesBackups.status)
-    const backups = useSelector(state => state.filesBackups.item)
+    const backups = useSelector(state => state.filesBackups.items)
 
     useEffect(() => {
         dispatch(

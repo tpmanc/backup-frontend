@@ -109,3 +109,45 @@ const profileLoadError = res => ({
         ...res
     }
 })
+
+export const profileLogout = (onSuccess, onError) => {
+    if (jwtHelper.getToken() !== null) {
+        return dispatch => {
+            dispatch(profileLogoutStart())
+        
+            axiosHelper.post(
+                client.getApiUrl() + '/logout',
+                (res) => {
+                    dispatch(
+                        profileLogoutFinish()
+                    )
+                    onSuccess()
+                },
+                (err) => {
+                    dispatch(profileLogoutError())
+                    onError(err.message)
+                },
+            )
+        }
+    } else {
+        return dispatch => {}
+    }
+}
+const profileLogoutStart = res => ({
+    type: PROFILE_LOGOUT_START,
+    payload: {
+        ...res
+    }
+})
+const profileLogoutFinish = res => ({
+    type: PROFILE_LOGOUT_SUCCESS,
+    payload: {
+        ...res
+    }
+})
+const profileLogoutError = res => ({
+    type: PROFILE_LOGOUT_ERROR,
+    payload: {
+        ...res
+    }
+})
