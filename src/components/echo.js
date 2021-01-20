@@ -16,6 +16,7 @@ let echo = new Echo({
     broadcaster: 'socket.io',
     host: 'backup.wsdxz.ru:6001', // значение должно быть равным authHost из конфига + порт
     // transports: ['websocket', 'polling', 'flashsocket'],
+    withCredentials: true,
     auth: {
         headers: {
             'Authorization': "Bearer " + jwtHelper.getToken()
