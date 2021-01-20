@@ -1,6 +1,7 @@
 import Echo from 'laravel-echo'
 import { io } from 'socket.io-client'
 import { jwtHelper } from '../helpers/jwtHelper'
+import { Notification } from 'rsuite'
 
 // const socket = io
 // window.io = socket
@@ -14,21 +15,24 @@ window.io = require('socket.io-client');
 
 let echo = new Echo({
     broadcaster: 'socket.io',
-    host: 'backup.wsdxz.ru:6001', // значение должно быть равным authHost из конфига + порт
+    host: 'api.backup.wsdxz.ru:6001', // значение должно быть равным authHost из конфига + порт
     // transports: ['websocket', 'polling', 'flashsocket'],
-    withCredentials: true,
     auth: {
         headers: {
-            'Authorization': "Bearer " + jwtHelper.getToken()
-        }
-    }
+            'Authorization': "Bearer " + jwtHelper.getToken(),
+        },
+    },
 });
 // console.log(echo)
 
 echo
     .private('test')
-    .listen('TestEvent', (e) => {
-        alert()
+    .listen('FilesBackupReady', (e) => {
+        Notification.success({
+            title: 'Success!',
+            placement: 'topStart',
+            description: 'Files backup ready',
+        })
     });
 
 // export default AppEcho
