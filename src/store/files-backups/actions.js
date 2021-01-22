@@ -52,7 +52,7 @@ export const filesBackupsDownloadUrl = (id, callback, onError) => {
     //   dispatch(filesBackupsLoadStart())
   
       axios
-        .get(client.getApiUrl() + `/files-backup/download?id=${id}`)
+        .get(client.getApiUrl() + `/files-backup/download?id=${id}`, {headers: {responseType: 'blob',}})
         .then(res => {
             console.log(res.data)
             // dispatch(
