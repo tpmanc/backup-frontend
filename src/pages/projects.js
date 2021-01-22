@@ -120,7 +120,7 @@ export default function Projects() {
                     setId(0)
                     Notification.success({
                         title: 'Success!',
-                        placement: 'topStart',
+                        placement: 'topEnd',
                         description: 'Project Saved',
                     })
                 },
@@ -131,7 +131,7 @@ export default function Projects() {
     const onError = (message) => {
         Notification.error({
             title: 'Error!',
-            placement: 'topStart',
+            placement: 'topEnd',
             description: message,
         })
     }

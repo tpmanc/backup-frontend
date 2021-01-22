@@ -46,3 +46,27 @@ const filesBackupsLoadError = res => ({
         ...res
     }
 })
+
+export const filesBackupsDownloadUrl = (id, callback, onError) => {
+    return dispatch => {
+    //   dispatch(filesBackupsLoadStart())
+  
+      axios
+        .get(client.getApiUrl() + `/files-backup/download?id=${id}`)
+        .then(res => {
+            console.log(res.data)
+            // dispatch(
+            //     filesBackupsLoadFinish({
+            //         status: 'ok',
+            //         items: res.data,
+            //     })
+            // )
+            callback()
+        })
+        .catch(err => {
+            // dispatch(filesBackupsLoadError())
+
+            onError(err.message)
+        })
+    }
+}

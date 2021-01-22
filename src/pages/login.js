@@ -33,7 +33,7 @@ export default function LoginPage() {
                 () => {
                     Notification.success({
                         title: 'Success!',
-                        placement: 'topStart',
+                        placement: 'topEnd',
                         description: 'Ok',
                     })
                 },
@@ -44,7 +44,7 @@ export default function LoginPage() {
     const onError = (message) => {
         Notification.error({
             title: 'Error!',
-            placement: 'topStart',
+            placement: 'topEnd',
             description: message,
         })
     }
@@ -53,7 +53,7 @@ export default function LoginPage() {
         <div>
             <h3>Login To Profile</h3>
 
-            <Panel bordered>
+            <Panel header="Login" bordered>
                 <Form fluid>
                     <FormGroup>
                         <ControlLabel>E-mail</ControlLabel>

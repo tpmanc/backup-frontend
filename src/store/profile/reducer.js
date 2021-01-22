@@ -15,6 +15,7 @@ import {
 
 const initialState = {
     status: 'init',
+    profileStatus: 'init',
     profile: null,
     token: null,
     expiresAt: null,
@@ -50,20 +51,20 @@ export function profileReducer(state = initialState, action) {
         case PROFILE_LOAD_START: {
             return {
                 ...state,
-                status: 'loading',
+                profileStatus: 'loading',
             }
         }
         case PROFILE_LOAD_SUCCESS: {
             return {
                 ...state,
-                status: 'loaded',
+                profileStatus: 'loaded',
                 profile: action.payload.profile,
             }
         }
         case PROFILE_LOAD_ERROR: {
             return {
                 ...state,
-                status: 'error',
+                profileStatus: 'error',
                 profile: null,
                 token: null,
                 expiresAt: null,

@@ -30,14 +30,14 @@ export default function DatabaseView() {
     const onError = (message) => {
         Notification.error({
             title: 'Error!',
-            placement: 'topStart',
+            placement: 'topEnd',
             description: message,
         })
     }
     const success = (message) => {
         Notification.success({
             title: 'Success!',
-            placement: 'topStart',
+            placement: 'topEnd',
             description: message,
         })
     }

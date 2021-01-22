@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   BrowserRouter as Router,
@@ -15,23 +15,15 @@ import { Sidebar, Sidenav } from 'rsuite';
 import { Nav, Dropdown } from 'rsuite'
 import { Icon } from 'rsuite'
 
-import './app-sidebar.css'
+import './app-sidebar.sass'
 
 function AppSidebar() {
   const dispatch = useDispatch()
   const profile = useSelector(state => state.profile.profile)
 
-  useEffect(() => {})
+  const [isOpen, setIsOpen] = useState(true)
 
-  const headerStyles = {
-    padding: 18,
-    fontSize: 16,
-    height: 56,
-    background: '#34c3ff',
-    color: ' #fff',
-    whiteSpace: 'nowrap',
-    overflow: 'hidden'
-  }
+  useEffect(() => {})
   
   const iconStyles = {
     width: 56,
@@ -39,8 +31,6 @@ function AppSidebar() {
     lineHeight: '56px',
     textAlign: 'center'
   }
-
-  const expand = true
 
   const logoutRun = () => {
     dispatch(
@@ -53,7 +43,7 @@ function AppSidebar() {
     )
   }
 
-  const NavToggle = ({ expand, onChange }) => {
+  const NavToggle = ({ onChange }) => {
     return (
       <Navbar appearance="subtle" className="nav-toggle">
         <Navbar.Body>
@@ -74,7 +64,7 @@ function AppSidebar() {
   
           <Nav pullRight>
             <Nav.Item onClick={onChange} style={{ width: 56, textAlign: 'center' }}>
-              <Icon icon={expand ? 'angle-left' : 'angle-right'} />
+              <Icon icon={isOpen ? 'angle-left' : 'angle-right'} />
             </Nav.Item>
           </Nav>
         </Navbar.Body>
@@ -83,27 +73,29 @@ function AppSidebar() {
   }
 
   const handleToggle = () => {
-
+    setIsOpen(!isOpen)
   }
 
   return (
     <Sidebar
         style={{ display: 'flex', flexDirection: 'column' }}
-        width={expand ? 260 : 56}
+        className='app-sidebar'
+        width={isOpen ? 260 : 56}
         collapsible
         >
         <Sidenav.Header>
-            <div style={headerStyles}>
+          <div className='app-sidebar__header'>
             <Icon icon="logo-analytics" size="lg" style={{ verticalAlign: 0 }} />
             <span style={{ marginLeft: 12 }}> Backuper</span>
-            </div>
+          </div>
         </Sidenav.Header>
         <Sidenav
-            expanded={expand}
-            defaultOpenKeys={['3']}
-            appearance="subtle"
+          expanded={isOpen}
+          defaultOpenKeys={['3']}
+          appearance="subtle"
+          className='app-sidebar__body'
         >
-            <Sidenav.Body>
+          <Sidenav.Body>
             <Nav>
                 <Nav.Item eventKey="1" icon={<Icon icon="dashboard" />} componentClass={Link} to="/">
                 Dashboard
@@ -112,9 +104,9 @@ function AppSidebar() {
                 Projects
                 </Nav.Item>
             </Nav>
-            </Sidenav.Body>
+          </Sidenav.Body>
         </Sidenav>
-        <NavToggle expand={expand} onChange={handleToggle} />
+        <NavToggle onChange={handleToggle} />
     </Sidebar>
   );
 }

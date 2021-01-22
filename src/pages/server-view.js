@@ -61,14 +61,14 @@ export default function ServerView() {
     const onError = (message) => {
         Notification.error({
             title: 'Error!',
-            placement: 'topStart',
+            placement: 'topEnd',
             description: message,
         })
     }
     const success = (message) => {
         Notification.success({
             title: 'Success!',
-            placement: 'topStart',
+            placement: 'topEnd',
             description: message,
         })
     }
@@ -121,7 +121,7 @@ export default function ServerView() {
                     resetDatabaseForm()
                     Notification.success({
                         title: 'Success!',
-                        placement: 'topStart',
+                        placement: 'topEnd',
                         description: 'Database Saved',
                     })
                 },
@@ -159,7 +159,7 @@ export default function ServerView() {
                     resetFilesForm()
                     Notification.success({
                         title: 'Success!',
-                        placement: 'topStart',
+                        placement: 'topEnd',
                         description: 'Files Backup Saved',
                     })
                 },
@@ -170,7 +170,6 @@ export default function ServerView() {
 
     const renderDatabaseTable = () => {
         return <Table
-            height={400}
             data={databases}
             onRowClick={data => {}}
         >
@@ -248,7 +247,6 @@ export default function ServerView() {
 
     const renderFilesTable = () => {
         return <Table
-            height={400}
             data={files}
             onRowClick={data => {}}
         >

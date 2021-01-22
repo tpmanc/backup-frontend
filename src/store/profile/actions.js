@@ -64,7 +64,7 @@ const profileLoginError = res => ({
     }
 })
 
-export const profileLoad = (onSuccess, onError) => {
+export const profileLoad = (onSuccess, onReject, onError) => {
     if (jwtHelper.getToken() !== null) {
         return dispatch => {
             dispatch(profileLoadStart())
@@ -74,7 +74,6 @@ export const profileLoad = (onSuccess, onError) => {
                 (res) => {
                     dispatch(
                         profileLoadFinish({
-                            status: 'ok',
                             profile: res.data.profile,
                         })
                     )
@@ -88,7 +87,10 @@ export const profileLoad = (onSuccess, onError) => {
             )
         }
     } else {
-        return dispatch => {}
+        return dispatch => {
+            onReject()
+            dispatch(profileLoadError())
+        }
     }
 }
 const profileLoadStart = res => ({
