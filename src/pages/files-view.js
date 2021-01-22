@@ -86,6 +86,7 @@ export default function FilesView() {
                     }
                     return (
                         <span>
+                            <IconButton size="xs" icon={ <Icon icon="trash2"/> } onClick={downloadAction} />
                             <IconButton size="xs" icon={ <Icon icon="trash2"/> } onClick={deleteAction} />
                         </span>
                     );
