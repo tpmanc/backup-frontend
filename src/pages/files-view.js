@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from "react-router-dom"
-import { filesBackupsLoad } from '../store/files-backups/actions'
+import { filesBackupsLoad, filesBackupsDownloadUrl } from '../store/files-backups/actions'
 
 import { Notification } from 'rsuite'
 import { Panel } from 'rsuite'
@@ -30,14 +30,14 @@ export default function FilesView() {
     const onError = (message) => {
         Notification.error({
             title: 'Error!',
-            placement: 'topStart',
+            placement: 'topEnd',
             description: message,
         })
     }
     const success = (message) => {
         Notification.success({
             title: 'Success!',
-            placement: 'topStart',
+            placement: 'topEnd',
             description: message,
         })
     }
@@ -62,6 +62,17 @@ export default function FilesView() {
 
                 <Cell>
                     {rowData => {
+                    function downloadAction() {
+                        dispatch(
+                            filesBackupsDownloadUrl(
+                                rowData.id,
+                                () => {
+                                    success('')
+                                },
+                                onError,
+                            )
+                        )
+                    }
                     function deleteAction() {
                         dispatch(
                             // filesDelete(

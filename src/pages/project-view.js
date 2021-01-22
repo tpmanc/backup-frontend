@@ -49,7 +49,7 @@ export default function ProjectView() {
     const onError = (message) => {
         Notification.error({
             title: 'Error!',
-            placement: 'topStart',
+            placement: 'topEnd',
             description: message,
         })
     }
@@ -157,7 +157,7 @@ export default function ProjectView() {
 
                 Notification.success({
                     title: 'Success!',
-                    placement: 'topStart',
+                    placement: 'topEnd',
                     description: 'Server Saved',
                 })
             }, onError)
