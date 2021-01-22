@@ -26,12 +26,21 @@ let echo = new Echo({
 // console.log(echo)
 
 echo
-    .private('test')
+    .private('backup-ready-1')
     .listen('FilesBackupReady', (e) => {
         Notification.success({
             title: 'Success!',
             placement: 'topStart',
             description: 'Files backup ready',
+        })
+    });
+echo
+    .private('backup-ready-1')
+    .listen('TestEvent', (e) => {
+        Notification.success({
+            title: 'Success!',
+            placement: 'topStart',
+            description: 'Test',
         })
     });
 
