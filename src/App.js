@@ -55,7 +55,7 @@ function App() {
     <div className="show-fake-browser sidebar-page">
       <Router>
         <Switch>
-          <Route path="/login">
+          <Route strict path="/login">
             <LoginPage />
           </Route>
           {
@@ -70,12 +70,12 @@ function App() {
                   <Container>
                     <AppHeader />
                     <Content style={contentStyles}>
-                      <AuthRoute authed={profile !== null} path='/projects' component={Projects} />
-                      <AuthRoute authed={profile !== null} path='/project/:id' component={ProjectView} />
-                      <AuthRoute authed={profile !== null} path='/server/:id' component={ServerView} />
-                      <AuthRoute authed={profile !== null} path='/database/:id' component={DatabaseView} />
-                      <AuthRoute authed={profile !== null} path='/files/:id' component={FilesView} />
-                      <AuthRoute authed={profile !== null} path='/' component={IndexPage} />
+                      <AuthRoute authed={profile !== null} strict path='/projects' component={Projects} />
+                      <AuthRoute authed={profile !== null} strict path='/project/:id' component={ProjectView} />
+                      <AuthRoute authed={profile !== null} strict path='/server/:id' component={ServerView} />
+                      <AuthRoute authed={profile !== null} strict path='/database/:id' component={DatabaseView} />
+                      <AuthRoute authed={profile !== null} strict path='/files/:id' component={FilesView} />
+                      <AuthRoute authed={profile !== null} strict path='/' component={IndexPage} />
                     </Content>
                   </Container>
                 </Container>

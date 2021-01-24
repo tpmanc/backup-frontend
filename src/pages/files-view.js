@@ -73,20 +73,23 @@ export default function FilesView() {
                             )
                         )
                     }
-                    function deleteAction() {
-                        dispatch(
-                            // filesDelete(
-                            //     rowData.id,
-                            //     () => {
-                            //         success('Files Backup Removed')
-                            //     },
-                            //     onError,
-                            // )
-                        )
-                    }
                     return (
                         <span>
-                            <IconButton size="xs" icon={ <Icon icon="trash2"/> } onClick={downloadAction} />
+                            <IconButton size="xs" icon={ <Icon icon="download"/> } onClick={downloadAction} />
+                        </span>
+                    );
+                    }}
+                </Cell>
+            </Column>
+
+            <Column width={200} fixed="right">
+                <HeaderCell>Action</HeaderCell>
+
+                <Cell>
+                    {rowData => {
+                    function deleteAction() {}
+                    return (
+                        <span>
                             <IconButton size="xs" icon={ <Icon icon="trash2"/> } onClick={deleteAction} />
                         </span>
                     );
